@@ -181,7 +181,8 @@ if (process.env.NODE_ENV == 'production'){
 // serve index.html on the route '/'
   app.get('/', (req, res) => {
     console.log('ENTERED / PATH');  // BRETT ADDED FOR TESTING 2/18/2023
-    return res.status(200).sendFile(path.join(__dirname, '../index.html'));
+    return res.status(200).send('TO POSTMAN, from /');  // BRETT ADDED FOR TESTING 2/18/2023
+//     return res.status(200).sendFile(path.join(__dirname, '../index.html'));
 });
 }
 
