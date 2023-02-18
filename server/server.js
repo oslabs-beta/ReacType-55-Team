@@ -130,43 +130,43 @@ const server = new ApolloServer({ typeDefs, resolvers });
 server.applyMiddleware({ app, path: '/graphql' });
 /** ****************************************************************** */
 
-app.post(
-  '/signup',
-  userController.createUser,
-  cookieController.setSSIDCookie,
-  sessionController.startSession,
-  (req, res) => res.status(200).json({ sessionId: res.locals.ssid })
-);
+// app.post(
+//   '/signup',
+//   userController.createUser,
+//   cookieController.setSSIDCookie,
+//   sessionController.startSession,
+//   (req, res) => res.status(200).json({ sessionId: res.locals.ssid })
+// );
 
-app.post(
-  '/login',
-  userController.verifyUser,
-  cookieController.setSSIDCookie,
-  sessionController.startSession,
-  (req, res) => res.status(200).json({ sessionId: res.locals.ssid })
-);
+// app.post(
+//   '/login',
+//   userController.verifyUser,
+//   cookieController.setSSIDCookie,
+//   sessionController.startSession,
+//   (req, res) => res.status(200).json({ sessionId: res.locals.ssid })
+// );
 
-// user must be logged in to get or save projects, otherwise they will be redirected to login page
-app.post(
-  '/saveProject',
-  sessionController.isLoggedIn,
-  projectController.saveProject,
-  (req, res) => res.status(200).json(res.locals.savedProject)
-);
+// // user must be logged in to get or save projects, otherwise they will be redirected to login page
+// app.post(
+//   '/saveProject',
+//   sessionController.isLoggedIn,
+//   projectController.saveProject,
+//   (req, res) => res.status(200).json(res.locals.savedProject)
+// );
 
-app.post(
-  '/getProjects',
-  sessionController.isLoggedIn,
-  projectController.getProjects,
-  (req, res) => res.status(200).json(res.locals.projects)
-);
+// app.post(
+//   '/getProjects',
+//   sessionController.isLoggedIn,
+//   projectController.getProjects,
+//   (req, res) => res.status(200).json(res.locals.projects)
+// );
 
-app.delete(
-  '/deleteProject',
-  sessionController.isLoggedIn,
-  projectController.deleteProject,
-  (req, res) => res.status(200).json(res.locals.deleted)
-);
+// app.delete(
+//   '/deleteProject',
+//   sessionController.isLoggedIn,
+//   projectController.deleteProject,
+//   (req, res) => res.status(200).json(res.locals.deleted)
+// );
 
 // BRETT ADDED BELOW logs FOR TESTING 2/18/2023
 console.log(process.env.GITHUB_ID)
@@ -177,15 +177,15 @@ console.log(process.env.URI)
 if (process.env.NODE_ENV == 'production'){
   app.use('/dist', express.static(path.join(__dirname, '../dist')));
 
-// serve index.html on the route '/'
-  app.get('/', (req, res) => {
-    return res.status(200).sendFile(path.join(__dirname, '../index.html'));
-});
-}
+// // serve index.html on the route '/'
+//   app.get('/', (req, res) => {
+//     return res.status(200).sendFile(path.join(__dirname, '../index.html'));
+// });
+// }
 
-app.get('/', function(req, res) {
-  res.send('Houston, Caret is in orbit!');
-});
+// app.get('/', function(req, res) {
+//   res.send('Houston, Caret is in orbit!');
+// });
 
 // catch-all route handler
 app.use('*', (req, res) => res.status(404).send('Page not found'));
