@@ -7,10 +7,10 @@ const { DEV_PORT } = require('../config');
 
 const path = require('path');
 const cors = require('cors');
-const userController = require('./controllers/userController');
-const cookieController = require('./controllers/cookieController');
-const sessionController = require('./controllers/sessionController');
-const projectController = require('./controllers/projectController');
+// const userController = require('./controllers/userController');
+// const cookieController = require('./controllers/cookieController');
+// const sessionController = require('./controllers/sessionController');
+// const projectController = require('./controllers/projectController');
 
 const app = express();
 
@@ -24,7 +24,7 @@ app.use(express.urlencoded({ limit: '100mb', extended: true }));
 app.use(cookieParser());
 
 // Routes
-const stylesRouter = require('./routers/stylesRouter');
+// const stylesRouter = require('./routers/stylesRouter');
 
 // enable cors
 // options: origin: allows from localhost when in dev or the app://rse when using prod, credentials: allows credentials header from origin (needed to send cookies)
@@ -102,15 +102,15 @@ GraphQl Router
 /* ******************************************************************* */
 
 // Query resolvers
-const Query = require('./graphQL/resolvers/query');
-// Mutation resolvers
-const Mutation = require('./graphQL/resolvers/mutation');
+// const Query = require('./graphQL/resolvers/query');
+// // Mutation resolvers
+// const Mutation = require('./graphQL/resolvers/mutation');
 
 // package resolvers into one variable to pass to Apollo Server
-const resolvers = {
-  Query,
-  Mutation
-};
+// const resolvers = {
+//   Query,
+//   Mutation
+// };
 
 // app.use(
 //   '/demoRender',
@@ -118,16 +118,16 @@ const resolvers = {
 // );
 
 // Re-direct to route handlers:
-app.use('/user-styles', stylesRouter);
+// app.use('/user-styles', stylesRouter);
 
 // schemas used for graphQL
-const typeDefs = require('./graphQL/schema/typeDefs.js');
-const { dirname } = require('node:path');
+// const typeDefs = require('./graphQL/schema/typeDefs.js');
+// const { dirname } = require('node:path');
 
 // instantiate Apollo server and attach to Express server, mounted at 'http://localhost:PORT/graphql'
 
-const server = new ApolloServer({ typeDefs, resolvers });
-server.applyMiddleware({ app, path: '/graphql' });
+// const server = new ApolloServer({ typeDefs, resolvers });
+// server.applyMiddleware({ app, path: '/graphql' });
 /** ****************************************************************** */
 
 // app.post(
