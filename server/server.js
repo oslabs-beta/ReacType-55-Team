@@ -185,7 +185,7 @@ console.log('process.env.URI =', process.env.URI)
        return res.status(200).sendFile(path.join(__dirname, '../dist/index-prod.html'));  // BRETT ADDED FOR TESTING 2/18/2023
 //     return res.status(200).sendFile(path.join(__dirname, '../index.html'));  // ORIGINAL
 });
-}
+// }
 
 // app.get('/', function(req, res) {
 //   res.send('Houston, Caret is in orbit!');
