@@ -174,9 +174,9 @@ console.log('process.env.GITHUB_SECRET =', process.env.GITHUB_SECRET)
 console.log('process.env.URI =', process.env.URI)
 
 //if in production mode, statically serve everything in the build folder on the route '/dist'
-// if (process.env.NODE_ENV == 'production'){
-// //   console.log('ENTERED /dist PATH');  // BRETT ADDED FOR TESTING 2/18/2023
-//   app.use('/dist', express.static(path.join(__dirname, '../dist')));
+if (process.env.NODE_ENV == 'production'){
+//   console.log('ENTERED /dist PATH');  // BRETT ADDED FOR TESTING 2/18/2023
+  app.use('/dist', express.static(path.join(__dirname, '../dist')));
 
 // serve index.html on the route '/'
   app.get('/', (req, res) => {
@@ -185,7 +185,7 @@ console.log('process.env.URI =', process.env.URI)
        return res.status(200).sendFile(path.join(__dirname, '../dist/index-prod.html'));  // BRETT ADDED FOR TESTING 2/18/2023
 //     return res.status(200).sendFile(path.join(__dirname, '../index.html'));  // ORIGINAL
 });
-// }
+}
 
 // app.get('/', function(req, res) {
 //   res.send('Houston, Caret is in orbit!');
