@@ -32,7 +32,6 @@ export default function LoginButton() {
   if (state.isLoggedIn) {
     return (
       <Button
-        id="navbarButton"
         variant="contained"
         color="secondary"
         className="navbarButton"

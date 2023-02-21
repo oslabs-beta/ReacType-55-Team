@@ -64,27 +64,27 @@ function Canvas(props): JSX.Element {
   // find the current component to render on the canvas
   const currentComponent: Component = state.components.find(
     (elem: Component) => elem.id === state.canvasFocus.componentId
-  );
+    );
 
-  // changes focus of the canvas to a new component / child
-  const changeFocus = (componentId?: number, childId?: number | null) => {
-    dispatch({ type: 'CHANGE FOCUS', payload: { componentId, childId } });
-  };
-  // onClickHandler is responsible for changing the focused component and child component
-  function onClickHandler(event) {
-    event.stopPropagation();
-    // note: a null value for the child id means that we are focusing on the top-level component rather than any child
-    changeFocus(state.canvasFocus.componentId, null);
-  };
+    // changes focus of the canvas to a new component / child
+    const changeFocus = (componentId?: number, childId?: number | null) => {
+      dispatch({ type: 'CHANGE FOCUS', payload: { componentId, childId } });
+    };
+    // onClickHandler is responsible for changing the focused component and child component
+    function onClickHandler(event) {
+      event.stopPropagation();
+      // note: a null value for the child id means that we are focusing on the top-level component rather than any child
+      changeFocus(state.canvasFocus.componentId, null);
+    };
 
-  // stores a snapshot of state into the past array for UNDO. snapShotFunc is also invoked for nestable elements in DirectChildHTMLNestable.tsx
-  const snapShotFunc = () => {
-    // make a deep clone of state
-      const deepCopiedState = JSON.parse(JSON.stringify(state));
-      const focusIndex = state.canvasFocus.componentId - 1;
-      //pushes the last user action on the canvas into the past array of Component
-      state.components[focusIndex].past.push(deepCopiedState.components[focusIndex].children);
-  };
+    // stores a snapshot of state into the past array for UNDO. snapShotFunc is also invoked for nestable elements in DirectChildHTMLNestable.tsx
+    const snapShotFunc = () => {
+      // make a deep clone of state
+        const deepCopiedState = JSON.parse(JSON.stringify(state));
+        const focusIndex = state.canvasFocus.componentId - 1;
+        //pushes the last user action on the canvas into the past array of Component
+        state.components[focusIndex].past.push(deepCopiedState.components[focusIndex].children);
+    };
 
   // This hook will allow the user to drag items from the left panel on to the canvas
   const [{ isOver }, drop] = useDrop({
@@ -181,8 +181,11 @@ function Canvas(props): JSX.Element {
     backgroundColor: isOver ? '#FAFED1' : '#FBFBFB',
     border: '1px solid #FBFBF2',
     borderStyle: isOver ? 'dotted' : 'solid',
+    userSelect: 'none',
     aspectRatio: 'auto 774 / 1200',
     boxSizing: 'border-box',
+    // width: '100vw',
+    // height: '100vh'
   };
 
   const darkCanvasStyle = {
@@ -199,9 +202,7 @@ function Canvas(props): JSX.Element {
   // const canvasStyle = combineStyles(defaultCanvasStyle, currentComponent.style);
   const canvasStyle = combineStyles(defaultCanvasStyle, currentComponent.style);
   const darkCombinedCanvasStyle = combineStyles(darkCanvasStyle, currentComponent.style);
-  // console.log('CURRENTCOMPONENT.CHILDREN : ', currentComponent.children)
-  // console.log('STATE: ', state.components);
-  // console.log('CURRENTCOMPONENT : ', currentComponent);
+  // console.log('CURRENTCOMPONENT children: ', currentComponent.children, 'CURRCOMPONENT STYLE: ', currentComponent.style);
   return (
     <div className={'componentContainer'} ref={drop} style={props.isThemeLight ? canvasStyle : darkCombinedCanvasStyle} onClick={onClickHandler}>
        {renderChildren(currentComponent.children)}

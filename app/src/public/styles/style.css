@@ -410,10 +410,6 @@ BOTTOM PANEL
   transition: all 0.5s ease-in-out;
 }
 
-.bottom-show {
-  max-height: 100%;
-}
-
 .bottom-hide:focus-within {
   max-height: 100%;
 }
@@ -424,9 +420,8 @@ BOTTOM PANEL
 
 .tab-content {
   height: calc(100% - 76px);
-  width: 100%;
   overflow-y: scroll;
-  overflow-x: auto;
+  overflow-x: hidden;
 }
 
 #resize-drag {
@@ -513,8 +508,6 @@ NAVBAR
 #customized-menu {
   width: 16%;
 }
-
-
 /*
 /////////////////////////////////////////////////
 ANNOTATIONS
