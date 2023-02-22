@@ -175,14 +175,14 @@ console.log('process.env.URI =', process.env.URI)
 
 //if in production mode, statically serve everything in the build folder on the route '/dist'
 if (process.env.NODE_ENV == 'production'){
-//   console.log('ENTERED /dist PATH');  // BRETT ADDED FOR TESTING 2/18/2023
-  app.use('/dist', express.static(path.join(__dirname, '../dist')));
+//   app.use('/dist', express.static(path.join(__dirname, '../dist')));
+  app.use(express.static(path.resolve(__dirname, '../app/dist')));
 
 // serve index.html on the route '/'
   app.get('/', (req, res) => {
 //     console.log('ENTERED / PATH');  // BRETT ADDED FOR TESTING 2/18/2023
 //     return res.status(200).send('TO POSTMAN, from /');  // BRETT ADDED FOR TESTING 2/18/2023
-       return res.status(200).sendFile(path.join(__dirname, '../dist/index-prod.html'));  // BRETT ADDED FOR TESTING 2/18/2023
+return res.status(200).sendFile(path.join(__dirname, '../app/dist/index-prod.html'));
 //     return res.status(200).sendFile(path.join(__dirname, '../index.html'));  // ORIGINAL
 });
 }
