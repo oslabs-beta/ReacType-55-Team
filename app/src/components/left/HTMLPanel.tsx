@@ -160,15 +160,15 @@ const HTMLPanel = (props): JSX.Element => {
           <form onSubmit={handleSubmit} className="customForm">
 
             <h4 className={isThemeLight ? classes.lightThemeFontColor : classes.darkThemeFontColor } value = "New HTML Tag">New HTML Tag: </h4>
-            {/* <InputLabel className={isThemeLight ? `${classes.inputLabel} ${classes.lightThemeFontColor}` : `${classes.inputLabel} ${classes.darkThemeFontColor}`}>
+            <InputLabel className={isThemeLight ? `${classes.inputLabel} ${classes.lightThemeFontColor}` : `${classes.inputLabel} ${classes.darkThemeFontColor}`}>
               Tag:
-            </InputLabel> */}
+            </InputLabel>
               <TextField
-                label='Tag'
+                // label='Tag'
                 color='primary'
-                variant='outlined'
+                // variant='outlined'
                 type="text"
-                name="Tag"
+                // name="Tag"
                 value={tag}
                 autoComplete="off"
                 onChange={handleTagChange}
@@ -187,15 +187,15 @@ const HTMLPanel = (props): JSX.Element => {
                               </span>}
               
             <br></br>
-            {/* <InputLabel className={isThemeLight ? `${classes.inputLabel} ${classes.lightThemeFontColor}` : `${classes.inputLabel} ${classes.darkThemeFontColor}`}>
+            <InputLabel className={isThemeLight ? `${classes.inputLabel} ${classes.lightThemeFontColor}` : `${classes.inputLabel} ${classes.darkThemeFontColor}`}>
               Element Name:
-            </InputLabel> */}
+            </InputLabel>
             <TextField
               label='Element Name'
-              color='primary'
+              // color='primary'
               variant='outlined'
               type="text"
-              name="Tag Name"
+              // name="Tag Name"
               value={name}
               onChange={handleNameChange}
               autoComplete="off"
@@ -217,9 +217,9 @@ const HTMLPanel = (props): JSX.Element => {
               className={isThemeLight ? `${classes.addElementButton} ${classes.lightThemeFontColor}` : `${classes.addElementButton} ${classes.darkThemeFontColor}`}
               id="submitButton"
               type="submit"
-              color='primary'
+              // color='primary'
               variant='contained'
-              value="Add Element"
+              // value="Add Element"
             >Add Element
             </Button>
           </form>

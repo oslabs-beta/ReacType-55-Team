@@ -406,9 +406,9 @@ BOTTOM PANEL
 /////////////////////////////////////////////////////
 */
 .bottom-hide {
-  /* max-height: 76px;
+  max-height: 76px;
   box-sizing: border-box;
-  transition: all 0.5s ease-in-out; */
+  transition: all 0.5s ease-in-out;
 }
 
 .bottom-show {
@@ -523,9 +523,8 @@ ANNOTATIONS
 /////////////////////////////////////////////////
 */
 .annotate-button-empty {
-  float: right;
-  background-color: #3ec1ac;
-  border-radius: 15px;
+  background-color: lightgrey;
+  border-radius: 5px;
   font-size: 14px;
   color: rgb(32, 32, 32)
 }
