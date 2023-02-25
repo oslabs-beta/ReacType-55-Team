@@ -29,7 +29,8 @@ export default function LoginButton() {
     } else {
       // window.location.href = 'http://localhost:8080/#/login';  // REMOVING JUST FOR deploying to Heroku
       window.api.delCookie();
-      window.location.href = '/app/dist/index-prod.html';
+      // window.location.href = '/app/dist/index-prod.html';
+      window.location.href = '/0.0.0.0:5656/#/login'; // DEV_PORT: 5656 from config.js file
     }
   };
   if (state.isLoggedIn) {
