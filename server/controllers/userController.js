@@ -85,7 +85,7 @@ userController.createUser = (req, res, next) => {
 // the appropriate user in the database, and then authenticate the submitted password against the password stored in the database.
 userController.verifyUser = (req, res, next) => {
   let { username, password, isFbOauth } = req.body;
-  console.log('ENTERED verify: ', username, password); // BW:  DELETE THIS!
+  console.log('ENTERED verify: ', username, password); // BW:  Chain breaks here -- 'No Username Input'
 
   // handle Oauth
   if (res.locals.signUpType === 'oauth') {

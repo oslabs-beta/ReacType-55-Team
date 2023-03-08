@@ -16,6 +16,12 @@ export const sessionIsCreated = (
     password,
     isFbOauth
   });
+  console.log(
+    'In export sessionIsCreated (username/pass/body)): ',
+    username,
+    password,
+    body
+  ); // BW ADDED - DELETE
   const result = fetch(`${serverURL}/login`, {
     method: 'POST',
     mode: 'no-cors', // BW ADDED
