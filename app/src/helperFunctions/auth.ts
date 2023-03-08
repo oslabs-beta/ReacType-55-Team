@@ -2,10 +2,10 @@ const fetch = require('node-fetch');
 const isDev = process.env.NODE_ENV === 'development';
 const { DEV_PORT } = require('../../../config');
 let serverURL = 'https://reactype-caret.herokuapp.com';
-if (isDev) {
-  // serverURL = `http://localhost:${DEV_PORT}`;  // BW NOTE:  3/7/2023 - Documenting this out for same reason as change to line 31 in LoginButton.tsx page
-  serverURL = '/0.0.0.0:5656'; // /0.0.0.0 for Heroku (https://help.heroku.com/P1AVPANS/why-is-my-node-js-app-crashing-with-an-r10-error) & DEV_PORT: 5656 from config.js file
-}
+// if (isDev) {
+//   // serverURL = `http://localhost:${DEV_PORT}`;  // BW NOTE:  3/7/2023 - Documenting this out for same reason as change to line 31 in LoginButton.tsx page
+//   serverURL = '/0.0.0.0:5656'; // /0.0.0.0 for Heroku (https://help.heroku.com/P1AVPANS/why-is-my-node-js-app-crashing-with-an-r10-error) & DEV_PORT: 5656 from config.js file
+// }
 export const sessionIsCreated = (
   username: string,
   password: string,
