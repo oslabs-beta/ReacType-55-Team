@@ -30,7 +30,7 @@ const stylesRouter = require('./routers/stylesRouter');
 // options: origin: allows from localhost when in dev or the app://rse when using prod, credentials: allows credentials header from origin (needed to send cookies)
 app.use(
   cors({
-    origin: [`http://localhost:8080`, 'app://rse'],
+    origin: [`http://localhost:8080`, 'app://rse', '/0.0.0.0:5656/'], // BW:  ADDED last item as test
     credentials: true
   })
 );
@@ -130,9 +130,9 @@ const server = new ApolloServer({ typeDefs, resolvers });
 server.applyMiddleware({ app, path: '/graphql' });
 /** ****************************************************************** */
 
-console.log('CWD :', process.cwd()); // ** BW:  TO DELETE
+// console.log('CWD :', process.cwd()); // ** BW:  TO DELETE
 app.post(
-  '/signup', // MODIFIED 3/7/2023
+  '/signup',
   userController.createUser,
   cookieController.setSSIDCookie,
   sessionController.startSession,
@@ -140,7 +140,7 @@ app.post(
 );
 
 app.post(
-  'https://reactype-caret.herokuapp.com/login', // MODIFIED 3/7/2023, /app/
+  '/login',
   userController.verifyUser,
   cookieController.setSSIDCookie,
   sessionController.startSession,
