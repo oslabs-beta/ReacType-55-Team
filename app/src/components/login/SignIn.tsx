@@ -22,7 +22,10 @@ import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/actions.js';
 
 import { MuiThemeProvider } from '@material-ui/core/styles';
-import { SigninDark, SigninLight } from '../../../../app/src/public/styles/theme';
+import {
+  SigninDark,
+  SigninLight
+} from '../../../../app/src/public/styles/theme';
 import Brightness3Icon from '@material-ui/icons/Brightness3';
 import Brightness5Icon from '@material-ui/icons/Brightness5';
 
@@ -35,7 +38,7 @@ const mapDispatchToProps = (dispatch) => ({
 const mapStateToProps = (state) => {
   return {
     darkMode: state.darkModeSlice.darkMode
-  }
+  };
 };
 
 function Copyright() {
@@ -48,7 +51,7 @@ function Copyright() {
   );
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
     display: 'flex',
@@ -74,7 +77,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const SignIn: React.FC<LoginInt & RouteComponentProps> = props => {
+const SignIn: React.FC<LoginInt & RouteComponentProps> = (props) => {
   const classes = useStyles();
 
   const [username, setUsername] = useState('');
@@ -88,7 +91,7 @@ const SignIn: React.FC<LoginInt & RouteComponentProps> = props => {
   useEffect(() => {
     const githubCookie = setInterval(() => {
       window.api?.setCookie();
-      window.api?.getCookie(cookie => {
+      window.api?.getCookie((cookie) => {
         // if a cookie exists, set localstorage item with cookie data, clear interval, go back to '/' route to load app
         if (cookie[0]) {
           window.localStorage.setItem('ssid', cookie[0].value);
@@ -98,13 +101,13 @@ const SignIn: React.FC<LoginInt & RouteComponentProps> = props => {
         } else if (window.localStorage.getItem('ssid')) {
           clearInterval(githubCookie);
         }
-      }); 
+      });
     }, 2000);
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let inputVal = e.target.value;
-  
+
     switch (e.target.name) {
       case 'username':
         setUsername(inputVal);
@@ -113,6 +116,7 @@ const SignIn: React.FC<LoginInt & RouteComponentProps> = props => {
         setPassword(inputVal);
         break;
     }
+    console.log('DYNAMIC handleChange: ', username, password); // BW ADDED
   };
 
   const handleLogin = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -121,7 +125,9 @@ const SignIn: React.FC<LoginInt & RouteComponentProps> = props => {
     setInvalidUserMsg('');
     setInvalidPass(false);
     setInvalidPassMsg('');
-    sessionIsCreated(username, password, false).then(loginStatus => {
+    console.log('IN handlelogin: ', username, password); // BW - TO DELETE
+    sessionIsCreated(username, password, false).then((loginStatus) => {
+      console.log('IN sessionIsCreated, loginStatus = ', loginStatus); // BW - TO DELETE
       if (loginStatus === 'Success') {
         props.history.push('/');
       } else {
@@ -148,17 +154,17 @@ const SignIn: React.FC<LoginInt & RouteComponentProps> = props => {
   };
 
   const keyBindSignIn = useCallback((e) => {
-    if(e.key === 'Enter') {
+    if (e.key === 'Enter') {
       e.preventDefault();
       document.getElementById('SignIn').click();
     }
   }, []);
-  
+
   useEffect(() => {
     document.addEventListener('keydown', keyBindSignIn);
     return () => {
-      document.removeEventListener('keydown', keyBindSignIn)
-    }
+      document.removeEventListener('keydown', keyBindSignIn);
+    };
   }, []);
 
   // for users not wanting to make an account and use as guest
@@ -170,23 +176,23 @@ const SignIn: React.FC<LoginInt & RouteComponentProps> = props => {
     window.localStorage.setItem('ssid', 'guest');
     props.history.push('/');
   };
-  
+
   const handleGithubLogin = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-    ) => {
-      e.preventDefault();
-        window.api.github();
-        props.history.push('/');
-    }
-  const responseFacebook = response => {
+  ) => {
+    e.preventDefault();
+    window.api.github();
+    props.history.push('/');
+  };
+  const responseFacebook = (response) => {
     if (response.accessToken) {
       newUserIsCreated(response.email, response.email, randomPassword()).then(
-        userCreated => {
+        (userCreated) => {
           if (userCreated === 'Success') {
             props.history.push('/');
           } else {
             sessionIsCreated(response.email, randomPassword(), true).then(
-              loginStatus => {
+              (loginStatus) => {
                 if (loginStatus === 'Success') {
                   props.history.push('/');
                 }
@@ -208,16 +214,14 @@ const SignIn: React.FC<LoginInt & RouteComponentProps> = props => {
         <div className={classes.paper}>
           <Button
             color="primary"
-            style={{ 
+            style={{
               minWidth: '113.97px',
               top: 10,
               right: 20,
-              position: "absolute"
+              position: 'absolute'
             }}
             // variant="contained"
-            endIcon={
-              props.darkMode ? <Brightness3Icon /> : <Brightness5Icon />
-            }
+            endIcon={props.darkMode ? <Brightness3Icon /> : <Brightness5Icon />}
             onClick={() => {
               props.darkModeToggle();
             }}
@@ -269,7 +273,7 @@ const SignIn: React.FC<LoginInt & RouteComponentProps> = props => {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={e => handleLogin(e)}
+            onClick={(e) => handleLogin(e)}
           >
             Sign In
           </Button>
@@ -279,7 +283,7 @@ const SignIn: React.FC<LoginInt & RouteComponentProps> = props => {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={e => handleGithubLogin(e)}
+            onClick={(e) => handleGithubLogin(e)}
           >
             Sign In With Github
           </Button>
@@ -288,18 +292,26 @@ const SignIn: React.FC<LoginInt & RouteComponentProps> = props => {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={e => handleLoginGuest(e)}
+            onClick={(e) => handleLoginGuest(e)}
           >
             Continue as Guest
           </Button>
           <Grid container>
             <Grid item xs>
-              <RouteLink style={{color: props.darkMode ? '#aaaaaa' : 'black'}} to={`/signup`} className="nav_link">
+              <RouteLink
+                style={{ color: props.darkMode ? '#aaaaaa' : 'black' }}
+                to={`/signup`}
+                className="nav_link"
+              >
                 Forgot password?
               </RouteLink>
             </Grid>
             <Grid item>
-              <RouteLink style={{color: props.darkMode ? '#aaaaaa' : 'black'}} to={`/signup`} className="nav_link">
+              <RouteLink
+                style={{ color: props.darkMode ? '#aaaaaa' : 'black' }}
+                to={`/signup`}
+                className="nav_link"
+              >
                 Don't have an account? Sign Up
               </RouteLink>
             </Grid>
