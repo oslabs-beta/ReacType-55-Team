@@ -46,6 +46,7 @@ userController.createUser = (req, res, next) => {
   if (!password) {
     return res.status(400).json('No password input');
   }
+  console.log('ENTERED: ', username, password, email); // BW:  DELETE THIS!
 
   // create user using username and password
   Users.create({ username, password, email }, (err, newUser) => {
@@ -67,8 +68,7 @@ userController.createUser = (req, res, next) => {
       return next({
         log: `Error in userController.createUser: ${err}`,
         message: {
-          err:
-            'Error in userController.createUser. Check server logs for details'
+          err: 'Error in userController.createUser. Check server logs for details'
         }
       });
     }
@@ -108,7 +108,7 @@ userController.verifyUser = (req, res, next) => {
     }
     if (user) {
       // bcrypt compare function checks input password against hashed password
-      bcrypt.compare(password, user.password).then(isMatch => {
+      bcrypt.compare(password, user.password).then((isMatch) => {
         if (isMatch) {
           // if password matches, save user id for following middleware
           res.locals.id = user.id;

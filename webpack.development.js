@@ -4,7 +4,7 @@ const merge = require('webpack-merge');
 const base = require('./webpack.config');
 const path = require('path');
 const nonce = require('./app/src/utils/createNonce')();
-const {DEV_PORT} = require('./config');
+const { DEV_PORT } = require('./config');
 
 // merges webpack.config.js with development specific configs
 module.exports = merge(base, {
@@ -23,10 +23,12 @@ module.exports = merge(base, {
     },
     proxy: {
       '/demoRender': {
-        target: `http://localhost:${DEV_PORT}/`
+        // target: `http://localhost:${DEV_PORT}/`
+        target: '/0.0.0.0:5656/' // BW - Modified 3/8/2023
       },
       '/user-styles': {
-        target: `http://localhost:${DEV_PORT}/`
+        // target: `http://localhost:${DEV_PORT}/`
+        target: '/0.0.0.0:5656/' // BW - Modified 3/8/2023
       }
     }
   },
