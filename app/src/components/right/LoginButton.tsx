@@ -4,6 +4,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import StateContext from '../../context/context';
+import { Link, Route, Routes, useNavigate } from 'react-router-dom'; //  BW ADDED for logout functionality, SEE <Link to="/logout/login"> @ bottom
 
 export default function LoginButton() {
   const history = useHistory();
@@ -33,8 +34,24 @@ export default function LoginButton() {
   };
   if (state.isLoggedIn) {
     return (
+      <Link to="/logout">
+        <Button
+          id="navbarButton"
+          variant="contained"
+          color="secondary"
+          className="navbarButton"
+          style={{ minWidth: '102.11px' }}
+          onClick={handleLogout}
+          endIcon={<ExitToAppIcon />}
+        >
+          Log Out
+        </Button>
+      </Link>
+    );
+  }
+  return (
+    <Link to="/login">
       <Button
-        id="navbarButton"
         variant="contained"
         color="secondary"
         className="navbarButton"
@@ -42,20 +59,8 @@ export default function LoginButton() {
         onClick={handleLogout}
         endIcon={<ExitToAppIcon />}
       >
-        Log Out
+        Log In
       </Button>
-    );
-  }
-  return (
-    <Button
-      variant="contained"
-      color="secondary"
-      className="navbarButton"
-      style={{ minWidth: '102.11px' }}
-      onClick={handleLogout}
-      endIcon={<ExitToAppIcon />}
-    >
-      Log In
-    </Button>
+    </Link>
   );
 }
