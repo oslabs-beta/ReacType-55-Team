@@ -15,6 +15,7 @@ const mongoURI = process.env.MONGO_DB_DEV;
 const URI =
   process.env.NODE_ENV === 'production' ? mongoURI : process.env.MONGO_DB_DEV;
 
+console.log('DB URI: ', process.env.NODE_ENV, typeof URI, URI); // BW - TO DELETE
 const SALT_WORK_FACTOR = 10;
 // connect to mongo db
 mongoose
@@ -29,7 +30,7 @@ mongoose
     dbName: 'ReacType'
   })
   .then(() => console.log('Connected to Mongo DB.'))
-  .catch(err => console.log(err));
+  .catch((err) => console.log(err));
 
 const { Schema } = mongoose;
 
