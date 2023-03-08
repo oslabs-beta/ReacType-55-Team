@@ -27,8 +27,12 @@
 </p>
 
 
-<p align="center">
+<!-- <p align="center">
   <img width="1000" src="https://i.imgur.com/jR53ySV.png">
+</p> -->
+
+<p align="center">
+  <img width="1000" src="./resources/ReadMe.gif">
 </p>
 
 
