@@ -131,7 +131,7 @@ server.applyMiddleware({ app, path: '/graphql' });
 /** ****************************************************************** */
 
 app.post(
-  '/signup',
+  'https://reactype-caret.herokuapp.com/signup', // MODIFIED 3/7/2023
   userController.createUser,
   cookieController.setSSIDCookie,
   sessionController.startSession,
