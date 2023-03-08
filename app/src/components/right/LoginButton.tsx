@@ -7,7 +7,7 @@ import StateContext from '../../context/context';
 
 export default function LoginButton() {
   const history = useHistory();
-  const [state,] = useContext(StateContext);
+  const [state] = useContext(StateContext);
   // const handleLogout = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
   //   e.preventDefault();
   //   // clear local storage
@@ -24,11 +24,13 @@ export default function LoginButton() {
     window.localStorage.clear();
     if (process.env.NODE_ENV === 'production') {
       window.api.delCookie();
-      window.location.href = '/index-prod.html'
+      window.location.href = '/index-prod.html';
     } else {
-    window.location.href = 'http://localhost:8080/#/login';
+      // window.location.href = 'http://localhost:8080/#/login';  // REMOVING JUST FOR deploying to Heroku
+      window.api.delCookie();
+      window.location.href = '/0.0.0.0:5656/#/login'; // /0.0.0.0 for Heroku (https://help.heroku.com/P1AVPANS/why-is-my-node-js-app-crashing-with-an-r10-error) & DEV_PORT: 5656 from config.js file
     }
-  }
+  };
   if (state.isLoggedIn) {
     return (
       <Button
@@ -45,15 +47,15 @@ export default function LoginButton() {
     );
   }
   return (
-      <Button
-        variant="contained"
-        color="secondary"
-        className="navbarButton"
-        style={{ minWidth: '102.11px' }}
-        onClick={handleLogout}
-        endIcon={<ExitToAppIcon />}
-      >
-        Log In
-      </Button>
+    <Button
+      variant="contained"
+      color="secondary"
+      className="navbarButton"
+      style={{ minWidth: '102.11px' }}
+      onClick={handleLogout}
+      endIcon={<ExitToAppIcon />}
+    >
+      Log In
+    </Button>
   );
 }
