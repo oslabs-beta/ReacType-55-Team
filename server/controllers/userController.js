@@ -51,6 +51,8 @@ userController.createUser = (req, res, next) => {
   // create user using username and password
   Users.create({ username, password, email }, (err, newUser) => {
     // handle error of creating a new user
+    console.log('newUser: ', newUser); // BW:  DELETE THIS!
+    console.log('err.keyValue: ', err.keyValue); // BW:  DELETE THIS!
     if (err) {
       if (res.locals.signUpType === 'oauth') {
         return next();
@@ -74,6 +76,7 @@ userController.createUser = (req, res, next) => {
     }
     // if no error found when creating a new user, send back user ID in res.locals
     res.locals.id = newUser.id;
+    console.log('res.locals.id: ', res.locals.id); // BW:  DELETE THIS!
     return next();
   });
 };

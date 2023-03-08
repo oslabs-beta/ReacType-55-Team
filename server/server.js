@@ -130,6 +130,7 @@ const server = new ApolloServer({ typeDefs, resolvers });
 server.applyMiddleware({ app, path: '/graphql' });
 /** ****************************************************************** */
 
+console.log('CWD :', process.cwd()); // ** BW:  TO DELETE
 app.post(
   '/signup', // MODIFIED 3/7/2023
   userController.createUser,
@@ -138,9 +139,8 @@ app.post(
   (req, res) => res.status(200).json({ sessionId: res.locals.ssid })
 );
 
-console.log('CWD :', process.cwd()); // ** BW:  TO DELETE
 app.post(
-  'https://reactype-caret.herokuapp.com/login', // MODIFIED 3/7/2023
+  'https://reactype-caret.herokuapp.com/login', // MODIFIED 3/7/2023, /app/
   userController.verifyUser,
   cookieController.setSSIDCookie,
   sessionController.startSession,
