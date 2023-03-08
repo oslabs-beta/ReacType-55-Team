@@ -11,20 +11,25 @@ export const sessionIsCreated = (
   password: string,
   isFbOauth: boolean
 ): Promise<string> => {
-  const body = JSON.stringify({
+  // const body = JSON.stringify({
+  //   username,
+  //   password,
+  //   isFbOauth
+  // });
+  const body = {
     username,
     password,
     isFbOauth
-  });
-  console.log(
-    'In export sessionIsCreated (username/pass/body)): ',
-    username,
-    password,
-    body
-  ); // BW ADDED - DELETE
+  };
+  // console.log(
+  //   'In export sessionIsCreated (username/pass/body)): ',
+  //   username,
+  //   password,
+  //   body
+  // ); // BW ADDED - DELETE - CHAIN BREAKS WHEN posting body to fetch
   const result = fetch(`${serverURL}/login`, {
     method: 'POST',
-    mode: 'no-cors', // BW ADDED
+    // mode: 'no-cors', // BW ADDED
     credentials: 'include',
     headers: {
       'Content-Type': 'application/json'
