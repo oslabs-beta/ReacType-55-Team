@@ -16,7 +16,8 @@ export const sessionIsCreated = (
     password,
     isFbOauth
   });
-  const result = fetch(`${serverURL}/login`, {
+  const result = fetch(`/login`, {
+    // BW NOTE:  3/7/2023 - REMOVED ${serverURL} here from `${serverURL}/login`
     method: 'POST',
     credentials: 'include',
     headers: {
@@ -48,7 +49,8 @@ export const newUserIsCreated = (
     email,
     password
   });
-  const result = fetch(`${serverURL}/signup`, {
+  const result = fetch(`/signup`, {
+    // BW NOTE:  3/7/2023 - REMOVED ${serverURL} here from `${serverURL}/signup`
     method: 'POST',
     credentials: 'include',
     headers: {
