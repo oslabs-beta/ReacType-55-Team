@@ -17,8 +17,8 @@ export const sessionIsCreated = (
     isFbOauth
   });
   const result = fetch(`${serverURL}/login`, {
-    // BW NOTE:  3/7/2023 -
     method: 'POST',
+    mode: 'no-cors', // BW ADDED
     credentials: 'include',
     headers: {
       'Content-Type': 'application/json'
@@ -49,10 +49,10 @@ export const newUserIsCreated = (
     email,
     password
   });
-  console.log(`FRONT FETCH PATH: ${serverURL}/signup`); //  *** BW ADDED -- DELETE
+
   const result = fetch(`${serverURL}/signup`, {
-    // BW NOTE:  3/7/2023 -
     method: 'POST',
+    mode: 'no-cors', // BW ADDED
     credentials: 'include',
     headers: {
       'Content-Type': 'application/json'

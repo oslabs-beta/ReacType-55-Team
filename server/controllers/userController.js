@@ -46,7 +46,7 @@ userController.createUser = (req, res, next) => {
   if (!password) {
     return res.status(400).json('No password input');
   }
-  console.log('ENTERED: ', username, password, email); // BW:  DELETE THIS!
+  console.log('ENTERED create: ', username, password, email); // BW:  DELETE THIS!
 
   // create user using username and password
   Users.create({ username, password, email }, (err, newUser) => {
@@ -85,6 +85,8 @@ userController.createUser = (req, res, next) => {
 // the appropriate user in the database, and then authenticate the submitted password against the password stored in the database.
 userController.verifyUser = (req, res, next) => {
   let { username, password, isFbOauth } = req.body;
+  console.log('ENTERED verify: ', username, password); // BW:  DELETE THIS!
+
   // handle Oauth
   if (res.locals.signUpType === 'oauth') {
     username = res.locals.githubEmail;
