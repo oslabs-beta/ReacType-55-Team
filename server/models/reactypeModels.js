@@ -11,9 +11,10 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 require('dotenv').config();
-const mongoURI = process.env.MONGO_DB_DEV;
-const URI =
-  process.env.NODE_ENV === 'production' ? mongoURI : process.env.MONGO_DB_DEV;
+// const mongoURI = process.env.MONGO_DB_DEV;
+// const URI =
+//   process.env.NODE_ENV === 'production' ? mongoURI : process.env.MONGO_DB_DEV;
+const URI = process.env.URI; // BW ADDED - 3/8/2023
 
 console.log('DB URI: ', process.env.NODE_ENV, typeof URI, URI); // BW - TO DELETE
 const SALT_WORK_FACTOR = 10;
