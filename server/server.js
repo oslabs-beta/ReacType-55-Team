@@ -131,13 +131,14 @@ server.applyMiddleware({ app, path: '/graphql' });
 /** ****************************************************************** */
 
 app.post(
-  'https://reactype-caret.herokuapp.com/signup', // MODIFIED 3/7/2023
+  '/signup', // MODIFIED 3/7/2023
   userController.createUser,
   cookieController.setSSIDCookie,
   sessionController.startSession,
   (req, res) => res.status(200).json({ sessionId: res.locals.ssid })
 );
 
+console.log('CWD :', process.cwd()); // ** BW:  TO DELETE
 app.post(
   'https://reactype-caret.herokuapp.com/login', // MODIFIED 3/7/2023
   userController.verifyUser,

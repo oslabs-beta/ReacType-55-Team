@@ -49,7 +49,7 @@ export const newUserIsCreated = (
     email,
     password
   });
-  console.log(`FRONT FETCH PATH: ${serverURL}/login`); //  *** BW ADDED -- DELETE
+  console.log(`FRONT FETCH PATH: ${serverURL}/signup`); //  *** BW ADDED -- DELETE
   const result = fetch(`${serverURL}/signup`, {
     // BW NOTE:  3/7/2023 -
     method: 'POST',
