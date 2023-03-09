@@ -30,10 +30,9 @@ export default function LoginButton() {
       // window.location.href = 'http://localhost:8080/#/login';  // REMOVING JUST FOR deploying to Heroku
     }
   };
-  console.log('LS2 = ', window.localStorage.getItem('ssid'));
+
   if (window.localStorage.getItem('ssid') === 'guest') state.isLoggedIn = true; // BW ADDED - 3/9/2023
   if (state.isLoggedIn) {
-    console.log('/logout path entered'); // BW - TO DELETE
     return (
       <Link to="/login">
         <Button
@@ -50,7 +49,6 @@ export default function LoginButton() {
       </Link>
     );
   }
-  console.log('/login path entered'); // BW - TO DELETE
   return (
     <Link to="/login">
       <Button

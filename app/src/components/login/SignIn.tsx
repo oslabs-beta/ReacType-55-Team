@@ -29,10 +29,6 @@ import {
 import Brightness3Icon from '@material-ui/icons/Brightness3';
 import Brightness5Icon from '@material-ui/icons/Brightness5';
 
-// import { useContext } from 'react'; // ** BW ADDED - 3/8/2023
-// import StateContext from '../../context/context'; // ** BW ADDED - 3/8/2023
-// const [state] = useContext(StateContext); // ** BW ADDED - 3/8/2023
-
 const mapDispatchToProps = (dispatch) => ({
   darkModeToggle: () => {
     dispatch(actions.darkModeToggle());
@@ -176,8 +172,6 @@ const SignIn: React.FC<LoginInt & RouteComponentProps> = (props) => {
     // generate "cookie" in localStorage for guest users
     window.localStorage.setItem('ssid', 'guest');
     props.history.push('/');
-    console.log('LS = ', window.localStorage.getItem('ssid'));
-    // state.isLoggedIn = true; // ** BW ADDED - 3/8/2023
   };
 
   const handleGithubLogin = (
@@ -300,7 +294,7 @@ const SignIn: React.FC<LoginInt & RouteComponentProps> = (props) => {
             Continue as Guest
           </Button>
           <Grid container>
-            <Grid item xs>
+            {/* <Grid item xs>
               <RouteLink
                 style={{ color: props.darkMode ? '#aaaaaa' : 'black' }}
                 to={`/signup`}
@@ -308,7 +302,7 @@ const SignIn: React.FC<LoginInt & RouteComponentProps> = (props) => {
               >
                 Forgot password?
               </RouteLink>
-            </Grid>
+            </Grid> */}
             <Grid item>
               <RouteLink
                 style={{ color: props.darkMode ? '#aaaaaa' : 'black' }}
