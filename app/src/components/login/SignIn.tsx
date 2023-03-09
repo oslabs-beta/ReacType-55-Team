@@ -29,9 +29,9 @@ import {
 import Brightness3Icon from '@material-ui/icons/Brightness3';
 import Brightness5Icon from '@material-ui/icons/Brightness5';
 
-import { useContext } from 'react'; // ** BW ADDED - 3/8/2023
-import StateContext from '../../context/context'; // ** BW ADDED - 3/8/2023
-const [state] = useContext(StateContext); // ** BW ADDED - 3/8/2023
+// import { useContext } from 'react'; // ** BW ADDED - 3/8/2023
+// import StateContext from '../../context/context'; // ** BW ADDED - 3/8/2023
+// const [state] = useContext(StateContext); // ** BW ADDED - 3/8/2023
 
 const mapDispatchToProps = (dispatch) => ({
   darkModeToggle: () => {
@@ -176,7 +176,8 @@ const SignIn: React.FC<LoginInt & RouteComponentProps> = (props) => {
     // generate "cookie" in localStorage for guest users
     window.localStorage.setItem('ssid', 'guest');
     props.history.push('/');
-    state.isLoggedIn = true; // ** BW ADDED - 3/8/2023
+    console.log('LS = ', window.localStorage.getItem('ssid'));
+    // state.isLoggedIn = true; // ** BW ADDED - 3/8/2023
   };
 
   const handleGithubLogin = (

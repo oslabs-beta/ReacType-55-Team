@@ -27,14 +27,11 @@ export default function LoginButton() {
       window.api.delCookie();
       window.location.href = '/index-prod.html';
     } else {
-      // // window.location.href = 'http://localhost:8080/#/login';  // REMOVING JUST FOR deploying to Heroku
-      // console.log('BEFORE isloggedin: ', state.isLoggedIn);
-      // state.isLoggedIn = true; // BW ADDED 3/8/2023
-      // console.log('AFTER isloggedin: ', state.isLoggedIn);
-      // window.api.delCookie();
-      // window.location.href = '/0.0.0.0:5656/#/login'; // /0.0.0.0 for Heroku (https://help.heroku.com/P1AVPANS/why-is-my-node-js-app-crashing-with-an-r10-error) & DEV_PORT: 5656 from config.js file
+      // window.location.href = 'http://localhost:8080/#/login';  // REMOVING JUST FOR deploying to Heroku
     }
   };
+  console.log('LS2 = ', window.localStorage.getItem('ssid'));
+  if (window.localStorage.getItem('ssid') === 'guest') state.isLoggedIn = true; // BW ADDED - 3/9/2023
   if (state.isLoggedIn) {
     console.log('/logout path entered'); // BW - TO DELETE
     return (
