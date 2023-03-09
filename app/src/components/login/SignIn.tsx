@@ -174,6 +174,7 @@ const SignIn: React.FC<LoginInt & RouteComponentProps> = (props) => {
     // generate "cookie" in localStorage for guest users
     window.localStorage.setItem('ssid', 'guest');
     props.history.push('/');
+    console.log('props.history: ', props.history);
   };
 
   const handleGithubLogin = (

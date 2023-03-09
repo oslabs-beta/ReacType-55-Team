@@ -30,7 +30,7 @@ const stylesRouter = require('./routers/stylesRouter');
 // options: origin: allows from localhost when in dev or the app://rse when using prod, credentials: allows credentials header from origin (needed to send cookies)
 app.use(
   cors({
-    origin: [`http://localhost:8080`, 'app://rse', '/0.0.0.0:5656/'], // BW:  ADDED last item as test
+    origin: [`http://localhost:8080`, 'app://rse'],
     credentials: true
   })
 );
