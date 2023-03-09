@@ -25,7 +25,7 @@ export const sessionIsCreated = (
   const result = fetch(`${serverURL}/login`, {
     method: 'POST',
     // mode: 'no-cors', // BW ADDED
-    // credentials: 'include',
+    // credentials: 'include',  // BW Removed bc causing error
     headers: {
       'Content-Type': 'application/json'
     },
@@ -58,8 +58,8 @@ export const newUserIsCreated = (
 
   const result = fetch(`${serverURL}/signup`, {
     method: 'POST',
-    mode: 'no-cors', // BW ADDED
-    credentials: 'include',
+    // mode: 'no-cors', // BW ADDED
+    // credentials: 'include',  // BW Removed bc causing error
     headers: {
       'Content-Type': 'application/json'
     },
