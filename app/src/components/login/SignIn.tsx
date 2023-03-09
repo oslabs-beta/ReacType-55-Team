@@ -29,6 +29,10 @@ import {
 import Brightness3Icon from '@material-ui/icons/Brightness3';
 import Brightness5Icon from '@material-ui/icons/Brightness5';
 
+import { useContext } from 'react'; // ** BW ADDED - 3/8/2023
+import StateContext from '../../context/context'; // ** BW ADDED - 3/8/2023
+const [state] = useContext(StateContext); // ** BW ADDED - 3/8/2023
+
 const mapDispatchToProps = (dispatch) => ({
   darkModeToggle: () => {
     dispatch(actions.darkModeToggle());
@@ -124,9 +128,7 @@ const SignIn: React.FC<LoginInt & RouteComponentProps> = (props) => {
     setInvalidUserMsg('');
     setInvalidPass(false);
     setInvalidPassMsg('');
-    console.log('IN handlelogin: ', username, password); // BW - TO DELETE -- OK TIL HERE
     sessionIsCreated(username, password, false).then((loginStatus) => {
-      console.log('IN sessionIsCreated, loginStatus = ', loginStatus); // BW - TO DELETE
       if (loginStatus === 'Success') {
         props.history.push('/');
       } else {
@@ -174,7 +176,7 @@ const SignIn: React.FC<LoginInt & RouteComponentProps> = (props) => {
     // generate "cookie" in localStorage for guest users
     window.localStorage.setItem('ssid', 'guest');
     props.history.push('/');
-    console.log('props.history: ', props.history);
+    state.isLoggedIn = true; // ** BW ADDED - 3/8/2023
   };
 
   const handleGithubLogin = (

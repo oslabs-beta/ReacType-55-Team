@@ -24,9 +24,6 @@ export default function LoginButton() {
   const handleLogout = () => {
     window.localStorage.clear();
     if (process.env.NODE_ENV === 'production') {
-      // console.log('BEFORE isloggedin: ', state.isLoggedIn);
-      // state.isLoggedIn = true; // BW ADDED 3/8/2023
-      // console.log('AFTER isloggedin: ', state.isLoggedIn);
       window.api.delCookie();
       window.location.href = '/index-prod.html';
     } else {
