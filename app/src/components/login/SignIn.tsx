@@ -116,7 +116,6 @@ const SignIn: React.FC<LoginInt & RouteComponentProps> = (props) => {
         setPassword(inputVal);
         break;
     }
-    console.log('DYNAMIC handleChange: ', username, password); // BW ADDED
   };
 
   const handleLogin = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -125,7 +124,7 @@ const SignIn: React.FC<LoginInt & RouteComponentProps> = (props) => {
     setInvalidUserMsg('');
     setInvalidPass(false);
     setInvalidPassMsg('');
-    console.log('IN handlelogin: ', username, password); // BW - TO DELETE
+    console.log('IN handlelogin: ', username, password); // BW - TO DELETE -- OK TIL HERE
     sessionIsCreated(username, password, false).then((loginStatus) => {
       console.log('IN sessionIsCreated, loginStatus = ', loginStatus); // BW - TO DELETE
       if (loginStatus === 'Success') {
