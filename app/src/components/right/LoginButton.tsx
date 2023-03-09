@@ -24,11 +24,16 @@ export default function LoginButton() {
   const handleLogout = () => {
     window.localStorage.clear();
     if (process.env.NODE_ENV === 'production') {
+      console.log('BEFORE isloggedin: ', state.isLoggedIn);
+      state.isLoggedIn = true; // BW ADDED 3/8/2023
+      console.log('AFTER isloggedin: ', state.isLoggedIn);
       window.api.delCookie();
       window.location.href = '/index-prod.html';
     } else {
       // window.location.href = 'http://localhost:8080/#/login';  // REMOVING JUST FOR deploying to Heroku
+      console.log('BEFORE isloggedin: ', state.isLoggedIn);
       state.isLoggedIn = true; // BW ADDED 3/8/2023
+      console.log('AFTER isloggedin: ', state.isLoggedIn);
       window.api.delCookie();
       window.location.href = '/0.0.0.0:5656/#/login'; // /0.0.0.0 for Heroku (https://help.heroku.com/P1AVPANS/why-is-my-node-js-app-crashing-with-an-r10-error) & DEV_PORT: 5656 from config.js file
     }
