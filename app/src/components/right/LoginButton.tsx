@@ -24,9 +24,9 @@ export default function LoginButton() {
   const handleLogout = () => {
     window.localStorage.clear();
     if (process.env.NODE_ENV === 'production') {
-      console.log('BEFORE isloggedin: ', state.isLoggedIn);
-      state.isLoggedIn = true; // BW ADDED 3/8/2023
-      console.log('AFTER isloggedin: ', state.isLoggedIn);
+      // console.log('BEFORE isloggedin: ', state.isLoggedIn);
+      // state.isLoggedIn = true; // BW ADDED 3/8/2023
+      // console.log('AFTER isloggedin: ', state.isLoggedIn);
       window.api.delCookie();
       window.location.href = '/index-prod.html';
     } else {
@@ -41,7 +41,7 @@ export default function LoginButton() {
   if (state.isLoggedIn) {
     console.log('/logout path entered'); // BW - TO DELETE
     return (
-      <Link to="/logout">
+      <Link to="/login">
         <Button
           id="navbarButton"
           variant="contained"

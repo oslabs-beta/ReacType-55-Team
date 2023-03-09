@@ -31,7 +31,10 @@ const stylesRouter = require('./routers/stylesRouter');
 app.use(
   cors({
     origin: [`http://localhost:8080`, 'app://rse'],
-    credentials: true
+    credentials: true,
+    origin: origin, // BW Added - 3/8/2023
+    preflightContinue: true, // BW Added - 3/8/2023
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE' // BW Added - 3/8/2023
   })
 );
 
