@@ -3,7 +3,7 @@ const isDev = process.env.NODE_ENV === 'development';
 const { DEV_PORT } = require('../../../config');
 let serverURL = 'https://reactype-caret.herokuapp.com';
 // if (isDev) {
-//   serverURL = `http://localhost:${DEV_PORT}`;
+//   serverURL = `http://localhost:${DEV_PORT}`;  // BW documented out 3/10/2023
 // }
 export const sessionIsCreated = (
   username: string,

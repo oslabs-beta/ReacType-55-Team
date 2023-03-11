@@ -42,8 +42,8 @@ const mapDispatchToProps = (dispatch) => ({
 const mapStateToProps = (state) => {
   return {
     darkMode: state.darkModeSlice.darkMode
-  }
-}
+  };
+};
 
 // NavBar text and button styling
 const useStyles = makeStyles((theme: Theme) =>
@@ -72,7 +72,7 @@ const StyledMenu = withStyles({
   paper: {
     border: '1px solid #d3d4d5'
   }
-})(props => (
+})((props) => (
   <Menu
     elevation={0}
     getContentAnchorEl={null}
@@ -88,7 +88,7 @@ const StyledMenu = withStyles({
   />
 ));
 
-const StyledMenuItem = withStyles(theme => ({
+const StyledMenuItem = withStyles((theme) => ({
   root: {
     '&:focus': {
       '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
@@ -110,7 +110,7 @@ const NavBar = (props) => {
   const [modal, setModal] = useState(null);
   const [state, dispatch] = useContext(StateContext);
 
-  const handleClick = event => {
+  const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
@@ -173,21 +173,25 @@ const NavBar = (props) => {
           >
             ReacType
           </Typography>
-          <Link to="/tutorial" style={{ textDecoration: 'none' }} target='_blank'>
-          <Button
-            variant="contained"
-            color="secondary"
-            style={{ minWidth: '137.69px' }}
-            className="navbarButton"
-            id="navbarButton"
+          <Link
+            to="/tutorial"
+            style={{ textDecoration: 'none' }}
+            target="_blank"
           >
-            Tutorial
-          </Button>
+            <Button
+              variant="contained"
+              color="secondary"
+              style={{ minWidth: '137.69px' }}
+              className="navbarButton"
+              id="navbarButton"
+            >
+              Tutorial
+            </Button>
           </Link>
           {/* ==================================Dashboard Button================================================== */}
           {state.isLoggedIn ? (
             <Link to="/dashboard" style={{ textDecoration: 'none' }}>
-              <Button 
+              <Button
                 variant="contained"
                 color="secondary"
                 style={{ minWidth: '137.69px' }}
@@ -214,6 +218,9 @@ const NavBar = (props) => {
             Clear Canvas
           </Button>
           <ExportButton />
+
+          {/*
+          // BW Documented out 3/11/2023
           <Button
             className="navbarButton"
             id="navbarButton"
@@ -233,7 +240,7 @@ const NavBar = (props) => {
             }}
           >
             {props.darkMode ? 'Dark Mode' : 'Light Mode'}
-          </Button>
+          </Button> */}
           {state.isLoggedIn ? ( // render Manage Project button/dropdown only if user is logged in
             <Button
               variant="contained"
@@ -261,13 +268,13 @@ const NavBar = (props) => {
               className={classes.manageProject}
               onClick={handleClose}
             >
-              <SaveProjectButton/>
+              <SaveProjectButton />
             </StyledMenuItem>
             <StyledMenuItem
               className={classes.manageProject}
               onClick={handleClose}
             >
-              <ProjectsFolder/>
+              <ProjectsFolder />
             </StyledMenuItem>
             <StyledMenuItem
               className={classes.manageProject}
@@ -281,6 +288,6 @@ const NavBar = (props) => {
       {modal}
     </div>
   );
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

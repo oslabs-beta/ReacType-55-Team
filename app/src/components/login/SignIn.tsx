@@ -219,11 +219,11 @@ const SignIn: React.FC<LoginInt & RouteComponentProps> = (props) => {
             }}
             // variant="contained"
             endIcon={props.darkMode ? <Brightness3Icon /> : <Brightness5Icon />}
-            onClick={() => {
-              props.darkModeToggle();
-            }}
+            // onClick={() => {
+            //   props.darkModeToggle();   // BW Documented out 3/11/2023
+            // }}
           >
-            {`Dark Mode: ${props.darkMode}`}
+            {/* {`Dark Mode: ${props.darkMode}`} */}
           </Button>
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon />

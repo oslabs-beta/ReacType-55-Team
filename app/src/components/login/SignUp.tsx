@@ -26,7 +26,10 @@ import { connect } from 'react-redux';
 import * as actions from '../../redux/actions/actions.js';
 
 import { MuiThemeProvider } from '@material-ui/core/styles';
-import { SigninDark, SigninLight } from '../../../../app/src/public/styles/theme';
+import {
+  SigninDark,
+  SigninLight
+} from '../../../../app/src/public/styles/theme';
 
 const mapDispatchToProps = (dispatch) => ({
   darkModeToggle: () => {
@@ -37,7 +40,7 @@ const mapDispatchToProps = (dispatch) => ({
 const mapStateToProps = (state) => {
   return {
     darkMode: state.darkModeSlice.darkMode
-  }
+  };
 };
 
 function Copyright() {
@@ -50,7 +53,7 @@ function Copyright() {
   );
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
     display: 'flex',
@@ -75,7 +78,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const SignUp: React.FC<LoginInt & RouteComponentProps> = props => {
+const SignUp: React.FC<LoginInt & RouteComponentProps> = (props) => {
   const classes = useStyles();
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
@@ -187,7 +190,7 @@ const SignUp: React.FC<LoginInt & RouteComponentProps> = props => {
       setInvalidVerifyPassword(false);
     }
 
-    newUserIsCreated(username, email, password).then(userCreated => {
+    newUserIsCreated(username, email, password).then((userCreated) => {
       if (userCreated === 'Success') {
         props.history.push('/');
       } else {
@@ -212,17 +215,18 @@ const SignUp: React.FC<LoginInt & RouteComponentProps> = props => {
         <div className={classes.paper}>
           <Button
             color="primary"
-            style={{ 
+            style={{
               minWidth: '113.97px',
               top: 10,
               right: 20,
-              position: "absolute"
+              position: 'absolute'
             }}
-            onClick={() => {
-              props.darkModeToggle();
-            }}
+            // onClick={() => {
+            //   props.darkModeToggle();  // BW Documented out 3/11/2023
+            // }}
           >
-            {`Dark Mode: ${props.darkMode}`}
+            {/* {`Dark Mode: ${props.darkMode}`} */}
+            3/11/2023
           </Button>
           <Avatar className={classes.avatar}>
             <AssignmentIcon />
@@ -306,13 +310,17 @@ const SignUp: React.FC<LoginInt & RouteComponentProps> = props => {
               variant="contained"
               color="primary"
               className={classes.submit}
-              onClick={e => handleSignUp(e)}
+              onClick={(e) => handleSignUp(e)}
             >
               Sign Up
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <RouteLink style={{color: props.darkMode ? '#aaaaaa' : 'black'}} to={`/login`} className="nav_link">
+                <RouteLink
+                  style={{ color: props.darkMode ? '#aaaaaa' : 'black' }}
+                  to={`/login`}
+                  className="nav_link"
+                >
                   Already have an account? Sign In
                 </RouteLink>
               </Grid>
