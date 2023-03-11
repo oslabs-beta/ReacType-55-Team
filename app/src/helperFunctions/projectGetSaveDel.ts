@@ -40,7 +40,7 @@ export const saveProject = (
     headers: {
       'content-type': 'application/json'
     },
-    // credentials: 'include',   // BW documented out 3/10/2023
+    credentials: 'include', // BW documented out 3/10/2023
     body
   })
     .then((res) => res.json())

@@ -5,6 +5,7 @@ const projectController = {};
 // saveProject saves current workspace to database
 projectController.saveProject = (req, res, next) => {
   // pull project name and project itself from body
+  console.log('ENTERED projectController.saveProject: ', req.body); // BW - to DELETE
   const { name, project, userId, username, comments } = req.body;
   // create createdBy field for the document
   const createdAt = Date.now();
@@ -23,13 +24,15 @@ projectController.saveProject = (req, res, next) => {
         return next({
           log: `Error in projectController.saveProject: ${err}`,
           message: {
-            err: 'Error in projectController.saveProject, check server logs for details',
-          },
+            err: 'Error in projectController.saveProject, check server logs for details'
+          }
         });
       }
       res.locals.savedProject = result;
+      console.log('SAVED res.locals.savedProject: ', result); // BW - to DELETE
+
       return next();
-    },
+    }
   );
 };
 
@@ -41,12 +44,12 @@ projectController.getProjects = (req, res, next) => {
       return next({
         log: `Error in projectController.getProjects: ${err}`,
         message: {
-          err: 'Error in projectController.getProjects, check server logs for details',
-        },
+          err: 'Error in projectController.getProjects, check server logs for details'
+        }
       });
     }
     // so it returns each project like it is in state, not the whole object in DB
-    res.locals.projects = projects.map(elem => elem.project);
+    res.locals.projects = projects.map((elem) => elem.project);
     return next();
   });
 };
@@ -60,8 +63,8 @@ projectController.deleteProject = (req, res, next) => {
       return next({
         log: `Error in projectController.deleteProject: ${err}`,
         message: {
-          err: 'Error in projectController.deleteProject, check server logs for details',
-        },
+          err: 'Error in projectController.deleteProject, check server logs for details'
+        }
       });
     }
     res.locals.deleted = deleted;
