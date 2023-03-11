@@ -13,7 +13,7 @@ export const getProjects = (): Promise<any> => {
       'content-type': 'application/json'
     },
     // need credentials for userid pull from cookie
-    credentials: 'include',
+    // credentials: 'include',   // BW documented out 3/10/2023
     body
   })
     .then((res) => res.json())
@@ -40,7 +40,7 @@ export const saveProject = (
     headers: {
       'content-type': 'application/json'
     },
-    credentials: 'include',
+    // credentials: 'include',   // BW documented out 3/10/2023
     body
   })
     .then((res) => res.json())
@@ -58,7 +58,7 @@ export const deleteProject = (project: any): Promise<Object> => {
   });
   const deletedProject = fetch(`${serverURL}/deleteProject`, {
     method: 'DELETE',
-    credentials: 'include',
+    // credentials: 'include',    // BW documented out 3/10/2023
     headers: {
       'Content-Type': 'application/json'
     },
