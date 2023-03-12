@@ -36,7 +36,7 @@ export default function LoginButton() {
     useEffect(() => {
       // BW Added to test 3/12/2023
       console.log('STATE UPDATED');
-    }, [state]);
+    }, [window.localStorage]);
   };
 
   if (state.isLoggedIn || window.localStorage.getItem('ssid') === 'guest') {
