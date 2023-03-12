@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react'; //  BW ADDED useState to clear canvas - 3/12/2023
 import Button from '@material-ui/core/Button';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { useHistory } from 'react-router-dom';
@@ -8,7 +8,7 @@ import { Link, Route, Routes, useNavigate } from 'react-router-dom'; //  BW ADDE
 
 export default function LoginButton() {
   const history = useHistory();
-  const [state] = useContext(StateContext);
+  const [state, dispatch] = useContext(StateContext); //  BW ADDED dispatch in order to clear canvas - 3/12/2023
   // const handleLogout = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
   //   e.preventDefault();
   //   // clear local storage
@@ -22,6 +22,7 @@ export default function LoginButton() {
   // };
 
   const handleLogout = () => {
+    dispatch({ type: 'RESET STATE', payload: {} }); //  BW ADDED dispatch in order to clear canvas - 3/12/2023
     window.localStorage.clear();
     if (process.env.NODE_ENV === 'production') {
       window.api.delCookie();
@@ -31,7 +32,6 @@ export default function LoginButton() {
     }
   };
 
-  // if (window.localStorage.getItem('ssid') === 'guest') state.isLoggedIn = true; // TO DELETE -- BW ADDED - 3/9/2023
   if (state.isLoggedIn || window.localStorage.getItem('ssid') === 'guest') {
     // BW ADDED 2nd condition ssid=guest - 3/12/2023
     return (
