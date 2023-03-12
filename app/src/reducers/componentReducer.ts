@@ -571,7 +571,7 @@ const reducer = (state: State, action: Action) => {
       );
 
       //  ------------------------------------------- ALSO added code below  -------------------------------------------
-      
+
       let canvasFocus = { ...state.canvasFocus, childId: null }; // ADDED to avoid null error
       let nextTopSeparatorId = 1000; // ADDED to avoid null error
       const childIdDeleteClicked = action.payload.id; // ADDED to ensure no cross-element deletion possible
@@ -696,6 +696,7 @@ const reducer = (state: State, action: Action) => {
     }
     // Reset all component data back to their initial state but maintain the user's project name and log-in status
     case 'RESET STATE': {
+      console.log('Entered RESET STATE'); // TO DELETE
       const nextChildId = 1;
       const nextTopSeparatorId = 1000;
       const rootComponents = [1];

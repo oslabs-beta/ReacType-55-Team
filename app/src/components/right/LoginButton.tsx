@@ -22,7 +22,10 @@ export default function LoginButton() {
   // };
 
   const handleLogout = () => {
+    console.log('OLD state: ', state); // TO DELETE
     dispatch({ type: 'RESET STATE', payload: {} }); //  BW ADDED dispatch in order to clear canvas - 3/12/2023
+    console.log('NEW state: ', state); // TO DELETE
+
     window.localStorage.clear();
     if (process.env.NODE_ENV === 'production') {
       window.api.delCookie();
