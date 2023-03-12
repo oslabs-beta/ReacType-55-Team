@@ -31,8 +31,9 @@ export default function LoginButton() {
     }
   };
 
-  if (window.localStorage.getItem('ssid') === 'guest') state.isLoggedIn = true; // BW ADDED - 3/9/2023
-  if (state.isLoggedIn) {
+  // if (window.localStorage.getItem('ssid') === 'guest') state.isLoggedIn = true; // TO DELETE -- BW ADDED - 3/9/2023
+  if (state.isLoggedIn || window.localStorage.getItem('ssid') === 'guest') {
+    // BW ADDED 2nd condition ssid=guest - 3/12/2023
     return (
       <Link to="/login">
         <Button
