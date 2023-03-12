@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'; //  BW ADDED useState to clear canvas - 3/12/2023
+import React, { useContext, useState, useEffect } from 'react'; //  BW ADDED useState to clear canvas - 3/12/2023
 import Button from '@material-ui/core/Button';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { useHistory } from 'react-router-dom';
@@ -33,6 +33,10 @@ export default function LoginButton() {
     } else {
       // window.location.href = 'http://localhost:8080/#/login';  // REMOVING JUST FOR deploying to Heroku
     }
+    useEffect(() => {
+      // BW Added to test 3/12/2023
+      console.log('STATE UPDATED');
+    }, [state]);
   };
 
   if (state.isLoggedIn || window.localStorage.getItem('ssid') === 'guest') {
