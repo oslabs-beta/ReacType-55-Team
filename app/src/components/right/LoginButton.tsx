@@ -21,10 +21,10 @@ export default function LoginButton() {
   //   history.push('/login');
   // };
 
-  const handleLogout = () => {
-    console.log('OLD state: ', state); // TO DELETE
+  const handleLogout = (props) => {
+    console.log('OLD state: ', props); // TO DELETE --> changed from state to props
     dispatch({ type: 'RESET STATE', payload: {} }); //  BW ADDED dispatch in order to clear canvas - 3/12/2023
-    console.log('NEW state: ', state); // TO DELETE
+    console.log('NEW state: ', props); // TO DELETE --> changed from state to props
 
     window.localStorage.clear();
     if (process.env.NODE_ENV === 'production') {
@@ -33,11 +33,12 @@ export default function LoginButton() {
     } else {
       // window.location.href = 'http://localhost:8080/#/login';  // REMOVING JUST FOR deploying to Heroku
     }
-    useEffect(() => {
-      // BW Added to test 3/12/2023
-      console.log('STATE UPDATED');
-    }, [window.localStorage]);
   };
+
+  // BW Added to test 3/12/2023
+  useEffect(() => {
+    console.log('STATE UPDATED');
+  }, [window.localStorage]);
 
   if (state.isLoggedIn || window.localStorage.getItem('ssid') === 'guest') {
     // BW ADDED 2nd condition ssid=guest - 3/12/2023

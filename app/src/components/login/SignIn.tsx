@@ -274,7 +274,7 @@ const SignIn: React.FC<LoginInt & RouteComponentProps> = (props) => {
           >
             Sign In
           </Button>
-          <Button
+          {/* <Button
             fullWidth
             id="SignInWithGithub"
             variant="contained"
@@ -283,7 +283,7 @@ const SignIn: React.FC<LoginInt & RouteComponentProps> = (props) => {
             onClick={(e) => handleGithubLogin(e)}
           >
             Sign In With Github
-          </Button>
+          </Button> */}
           <Button
             fullWidth
             variant="contained"
